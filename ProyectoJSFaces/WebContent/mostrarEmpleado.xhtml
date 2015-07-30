@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <h:head>
+        <title>Java Server Faces 2.2</title>
+    </h:head>
+    <h:body>
+    	<h1>El empleado buscado es:</h1>
+    	
+    <h:panelGrid columns="3" border="4">
+    	<h:panelGroup>
+    		<h:outputText value="Id Empleado"/>
+    	</h:panelGroup>
+    	<h:panelGroup>
+    		<h:outputText value="Nombre"/>
+    	</h:panelGroup>
+    	<h:panelGroup>
+    		<h:outputText value="Apellido"/>
+    		
+    	</h:panelGroup>
+    	
+    	<h:outputText value="#{departamentosBeanJSF.empDTO.employeeId}"/>
+    	<h:outputText value="#{departamentosBeanJSF.empDTO.firstName}"/>
+    	<h:outputText value="#{departamentosBeanJSF.empDTO.lastName}"/>
+    	
+    	
+    
+    
+    
+    
+    </h:panelGrid>	
+  
+    	
+  
+    	
+    	
+    </h:body>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+
+
+<!-- AQUI PONEMOS LOS PARAMETROS QUE QUEREMOS QUE SE ENVÍEN A LA SIGUIENTE VISTA O ARCHIVO XHTML
+ EN NAME="" ES EL NOMBRE QUE APARECERA EN LA URL AL REDIRIGIR y Es cómo se comunica con el siguiente
+ xhtml al que redirigimos por lo tanto tienen que ser iguales para que funcione-->
+<f:metadata>
+	<f:viewParam name="departamentosBeanJSF" value="#{departamentosBeanJSF.idDep}"></f:viewParam>
+</f:metadata>
+ 
+ <!-- Y EN EL COMMAND BOOTON TENDRIAMOS QUE CAMBIAR EL CODIGO POR EL SIGUIENTE
+ <h:commandButton action="empleados?faces-redirect=true&amp; includeViewParams=true"><h:commandButton> 
+ 
+ 
+ 
+ -->
+ 
+    <h:head>
+    <link rel="styleSheet" href="CSS/tablas.css" type="text/css" media="all"></link>
+        <title>Java Server Faces 2.2</title>
+        
+    </h:head>
+    <h:body>
+    	<h1>Listar departamentos</h1>
+    	
+     <br></br>	
+    <h:form id="listadepartamentos">
+    	<h:selectOneMenu label = "Lista de departamentos" value="#{departamentosBeanJSF.idDep}">  <!-- va a buscar una clase Departamentos -->
+    	
+    	
+    	<!-- hace un for y recorre la lista -->
+    		<f:selectItems value="#{departamentosBeanJSF.lista}"  
+    		var = "d"
+    		itemValue="#{d.departmentId}"
+    		itemLabel="#{d.departmentName}" >
+    		
+    	</f:selectItems>
+    	</h:selectOneMenu>
+   
+     <h:commandButton class="btn" value="Buscar Empleados del departamento" action="#{departamentosBeanJSF.empleadosPorDepartamento}"></h:commandButton>
+    	
+   </h:form> 	
+    <br></br>
+   
+   <!-- UTILIZANDO OTRO SELECT -->
+   
+   <h:form id="listaempleados">
+    	<h:selectOneMenu label = "Lista Empleados" value="#{departamentosBeanJSF.idEmp}">  <!-- va a buscar una clase Departamentos -->
+    		<f:selectItems value="#{departamentosBeanJSF.listaEmp}"  
+    		var = "e"
+    		itemValue="#{e.employeeId}"
+    		itemLabel="#{e.firstName}" >
+    		
+    	</f:selectItems>
+    	</h:selectOneMenu>
+    	 <h:commandButton class="btn" value="Detalle del Empleado" action="#{departamentosBeanJSF.obtenerEmpleadoID}"></h:commandButton>
+    	
+   </h:form>
+   
+   <br></br>
+  
+   
+   <div>
+   <h:form id="tablaempleados">
+   <h:outputText rendered="#{empty departamentosBeanJSF.listaEmp}" value="No hay empleados en ese departamento" />
+   <h:dataTable value="#{departamentosBeanJSF.listaEmp}" var="em"
+    	rendered="#{not empty departamentosBeanJSF.listaEmp}">	<!-- Si la lista tiene información la muestra -->
+   
+   		<h:column>
+   			<f:facet name="header">Id Empleado </f:facet>
+   			#{em.employeeId}
+   		</h:column>
+   		<h:column>
+   			<f:facet name="header">Nombre</f:facet>
+   			#{em.firstName}
+   		</h:column>
+   		<h:column>
+   			<f:facet name="header">Apellido</f:facet>
+   			#{em.lastName}
+   		</h:column>
+   
+   </h:dataTable>
+   
+   </h:form>
+  </div> 
+  <!-- PARA MOSTRAR EL DETALLE DE LOS EMPLEADOS --> 
+  
+  <div id="detallediv">
+  <h:form id="detalleempleado">
+    <h:outputText rendered="#{empty departamentosBeanJSF.empDTO}" value="" />
+   <h:dataTable value="#{departamentosBeanJSF.empDTO}" var="empdetalle"
+    	rendered="#{not empty departamentosBeanJSF.empDTO}">	<!-- Si la lista tiene información la muestra -->
+   
+   		<h:column>
+   			<f:facet name="header">Id Empleado </f:facet>
+   			#{empdetalle.employeeId}
+   		</h:column>
+   		<h:column>
+   			<f:facet name="header">Nombre</f:facet>
+   			#{empdetalle.firstName}
+   		</h:column>
+   		<h:column>
+   			<f:facet name="header">Apellido</f:facet>
+   			#{empdetalle.lastName}
+   		</h:column>
+   
+   </h:dataTable>
+   </h:form>
+   </div>
+   
+   <!-- UTILIZANDO H: PANELGRID -->
+   <!-- 
+   	<h:panelGrid columns="3" border="4">
+    	<h:panelGroup>
+    		<h:outputText value="Id Empleado"/>
+    	</h:panelGroup>
+    	<h:panelGroup>
+    		<h:outputText value="Nombre"/>
+    	</h:panelGroup>
+    	<h:panelGroup>
+    		<h:outputText value="Apellido"/>
+    		
+    	</h:panelGroup>
+    	
+    	<h:outputText value="#{departamentosBeanJSF.empDTO.employeeId}"/>
+    	<h:outputText value="#{departamentosBeanJSF.empDTO.firstName}"/>
+    	<h:outputText value="#{departamentosBeanJSF.empDTO.lastName}"/>
+    	
+    </h:panelGrid>	
+    -->
+    	
+    </h:body>
+</html>
