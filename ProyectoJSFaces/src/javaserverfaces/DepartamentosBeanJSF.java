@@ -145,14 +145,8 @@ public class DepartamentosBeanJSF {
 	 */
 	public void obtenerEmpleadoID ()  //metodo que devuelve una lista de departamentos de la base de datos.
 	{
-		
-		
 		Operaciones oper = new Operaciones();
-		
 		this.empDTO = oper.obtenerEmpleado(idEmp);
-		
-	
-		
 		//return "mostrarEmpleado";
 	}
 	

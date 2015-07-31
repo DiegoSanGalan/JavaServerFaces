@@ -8,7 +8,7 @@
 <f:metadata>
 
 	<f:viewParam name="departamentosBeanJSF" value="#{empleadosBeanJSF.idDep}"></f:viewParam>
-	<f:event type="preRenderView" listener="#{empleadosBeanJSF.init}"></f:event>
+	<f:event type="preRenderView" listener="#{empleadosBeanJSF.empleadosPorDepartamento}"></f:event>
 </f:metadata>
  
  <h:head>
@@ -19,6 +19,18 @@
 
 En esta página la asociaremos con la clase Bean empleadosBeanJSF
 
+<h:form id="listaempleados">
+    	<h:selectOneMenu label = "Lista Empleados" value="#{empleadosBeanJSF.idEmp}">  <!-- va a buscar una clase Departamentos -->
+    		<f:selectItems value="#{empleadosBeanJSF.listaEmp}"  
+    		var = "e"
+    		itemValue="#{e.employeeId}"
+    		itemLabel="#{e.firstName}" >
+    		
+    	</f:selectItems>
+    	</h:selectOneMenu>
+    	 <h:commandButton class="btn" value="Detalle del Empleado" action="#{empleadosBeanJSF.obtenerEmpleadoID}"></h:commandButton>
+    	
+   </h:form>
 
 
 

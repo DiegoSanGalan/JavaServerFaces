@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<Context docBase="ProyectoEmpleados" path="/ProyectoEmpleados" reloadable="true">
+<Context docBase="ProyectoJSFaces" path="/ProyectoJSFaces" reloadable="true">
 <Resource 
 	name="jdbc/pool" 
 	auth="Container" 

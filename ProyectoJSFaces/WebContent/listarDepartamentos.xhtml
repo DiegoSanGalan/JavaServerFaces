@@ -6,12 +6,13 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 
-<!-- AQUI PONEMOS LOS PARAMETROS QUE QUEREMOS QUE SE ENVÍEN A LA SIGUIENTE VISTA O ARCHIVO XHTML
- EN NAME="" ES EL NOMBRE QUE APARECERA EN LA URL AL REDIRIGIR y Es cómo se comunica con el siguiente
- xhtml al que redirigimos por lo tanto tienen que ser iguales para que funcione-->
 <f:metadata>
 	<f:viewParam name="departamentosBeanJSF" value="#{departamentosBeanJSF.idDep}"></f:viewParam>
 </f:metadata>
+<!-- AQUI PONEMOS LOS PARAMETROS QUE QUEREMOS QUE SE ENVÍEN A LA SIGUIENTE VISTA O ARCHIVO XHTML
+ EN NAME="" ES EL NOMBRE QUE APARECERA EN LA URL AL REDIRIGIR y Es cómo se comunica con el siguiente
+ xhtml al que redirigimos por lo tanto tienen que ser iguales para que funcione-->
+
  
  <!-- Y EN EL COMMAND BOOTON TENDRIAMOS QUE CAMBIAR EL CODIGO POR EL SIGUIENTE
  <h:commandButton action="empleados?faces-redirect=true&amp; includeViewParams=true"><h:commandButton> 
@@ -42,8 +43,10 @@
     	</f:selectItems>
     	</h:selectOneMenu>
    
-     <h:commandButton class="btn" value="Buscar Empleados del departamento" action="#{departamentosBeanJSF.empleadosPorDepartamento}"></h:commandButton>
-    	
+
+     <h:commandButton class="btn" value="Mostrar empleados del departamento" action="empleados?faces-redirect=true&amp;includeViewParams=true"></h:commandButton>
+    
+     
    </h:form> 	
     <br></br>
    

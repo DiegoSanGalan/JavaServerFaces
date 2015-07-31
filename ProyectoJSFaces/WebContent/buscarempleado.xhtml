@@ -6,12 +6,23 @@
       xmlns:h="http://java.sun.com/jsf/html">
  
     <h:head>
-        <title>Java Server Faces 2.2</title>
+        <title>Buscar Empleado por id JSF</title>
     </h:head>
     <h:body>
     	<h3>Bienvenido</h3>
     	<h:form>
-    	   <h:inputText value="#{empleadosBeanJSF.idEmp}"></h:inputText>
+    	   	<h:inputText value="#{empleadosBeanJSF.idEmp}"
+    	   		
+       			
+    	   		
+    	   	
+    	   		validatorMessage="El id de empleado tiene que estar entre 100 y 207"
+    	   		required="true" requiredMessage="Debes introducir un valor">
+       			<f:validateLongRange minimum="100" maximum="207"></f:validateLongRange>
+       			
+       			<!--  alidator="#{empleadosBeanJSF.valida}"-->
+       			
+    	   </h:inputText>
     	   <h:commandButton value="Buscar Empleado" action="#{empleadosBeanJSF.obtenerEmpleadoID}"></h:commandButton>
     	</h:form>
     	
